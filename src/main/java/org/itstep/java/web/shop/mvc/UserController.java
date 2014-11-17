@@ -33,8 +33,10 @@ public class UserController {
             Integer id,
             Model model) {
         User u = userService.find(id);
+        User current = (User) currentUser.getPrincipal();
         model.addAttribute("user", u);
-        model.addAttribute("current", (User) currentUser.getPrincipal());
+        model.addAttribute("current", current);
+        model.addAttribute("title", current.getName());
         return "user";
     }
     

@@ -33,5 +33,10 @@ public class GoodDAO implements GoodService {
     public Good find(Integer id) {
         return (Good) sf.getCurrentSession().get(Good.class, id);
     }
+
+    @Override
+    public Category findCategory(Integer id) {
+        return (Category) sf.getCurrentSession().get(Category.class, id);
+    }
     
 }

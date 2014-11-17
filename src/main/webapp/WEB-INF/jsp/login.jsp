@@ -1,20 +1,7 @@
-<%-- 
-    Document   : user
-    Created on : Nov 9, 2014, 3:10:01 PM
-    Author     : andrii
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Page</title>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    </head>
-    <body>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<tiles:insertDefinition name="defaultTemplate">
+    <tiles:putAttribute name="body">
         <div class="container">
             <div class="row">
                 <div class="text-center center-block" style="width: 300px">
@@ -32,5 +19,5 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </tiles:putAttribute>
+</tiles:insertDefinition>

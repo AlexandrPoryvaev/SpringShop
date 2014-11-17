@@ -10,4 +10,5 @@ public interface GoodService {
     public List<Good> getList(Integer id);
     public List<Category> getCategoryList();
     public Good find(Integer id);
+    public Category findCategory(Integer id);
 }

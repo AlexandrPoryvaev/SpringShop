@@ -27,7 +27,7 @@ public class ShopController {
     public String categories(ModelMap model) {
         List<Category> cats = srv.getCategoryList();
         model.addAttribute("cats", cats);
-        
+        model.addAttribute("title", "Categories");
         
         return "categories";
     }
@@ -38,7 +38,9 @@ public class ShopController {
             Integer id,
             ModelMap model) {
         List<Good> goods = srv.getList(id);
+        Category cat = srv.findCategory(id);
         model.addAttribute("goods", goods);
+        model.addAttribute("title", cat.getName());
         
         return "goodlist";
     }
