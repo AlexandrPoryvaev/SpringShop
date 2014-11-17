@@ -9,11 +9,9 @@ package org.itstep.java.web.shop.service;
 import java.sql.SQLException;
 import java.util.List;
 import org.itstep.java.web.shop.model.User;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author andrii
- */
+@Transactional
 public interface UserService {
 
     User find(Integer id);

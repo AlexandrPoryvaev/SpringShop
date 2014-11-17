@@ -8,6 +8,7 @@ import org.itstep.java.web.shop.model.Good;
 import org.itstep.java.web.shop.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @RequestMapping("/shop")
 @SessionAttributes(types = Basket.class)
+@Transactional
 public class ShopController {
     @Autowired
     GoodService srv;

@@ -5,15 +5,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to Spring Web MVC project</title>
+        <title>The Best Chinese Goods for Your Pleasure!</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     </head>
 
     <body>
-        <p>Hello! This is the default welcome page for a Spring Web MVC project.</p>
-        <p><i>To display a different welcome page for this project, modify</i>
-            <tt>index.jsp</tt> <i>, or create your own welcome page then change
-                the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
-                welcome page and also update the welcome-file setting in</i>
-            <tt>web.xml</tt>.</p>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                
+                <ul class="nav navbar-nav">
+                    <li><a href="<c:url value="/user/login" />"> Login</a> </li>  
+                    <li><a href="<c:url value="/shop" />">Browse categories</a></li>
+                    <li><a href="<c:url value="/user/show" />">Profile</a></li>
+                    <li><a href="<c:url value="/user/logout" />">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>The Best Chinese Goods for Your Pleasure!</h1>
+                <h2>Go ahead and start your shopping!</h2>
+            </div>
+        </div>
     </body>
 </html>

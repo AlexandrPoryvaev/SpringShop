@@ -35,7 +35,7 @@
                         <div class="panel-body">
                             <ul>
                                 <c:forEach items="${goods}" var="good">
-                                    <li>${good.name}<a href="<c:url value="/shop/add/${good.catId}/${good.id}" />">Add to basket</a></li>
+                                    <li>${good.name}<a href="<c:url value="/shop/add/${good.category.id}/${good.id}" />">Add to basket</a></li>
                                 </c:forEach>
                             </ul>
                         </div>

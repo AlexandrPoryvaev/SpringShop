@@ -15,10 +15,22 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     </head>
     <body>
-        <form action="<c:url value="/j_spring_security_check" />" method="post">
-            <label>Email: <input type="text" name="j_username" /></label>
-            <label>Password: <input type="password" name="j_password" /></label>
-            <input type="submit" />
-        </form>
+        <div class="container">
+            <div class="row">
+                <div class="text-center center-block" style="width: 300px">
+                    <div >
+                        <form action="<c:url value="/j_spring_security_check" />" method="post">
+                            <div class="form-group">
+                                <label for="j_username">Email: </label><input class="form-control" type="text" name="j_username" />
+                            </div>
+                            <div class="form-group">
+                                <label for="j_password">Password: </label><input class="form-control" type="password" name="j_password" />
+                            </div>
+                            <input class="btn btn-success" type="submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

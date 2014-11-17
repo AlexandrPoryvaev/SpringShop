@@ -14,8 +14,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <context:component-scan base-package="org.itstep.java.web.shop.service" />
-    <context:component-scan base-package="org.itstep.java.web.shop.mvc" />
+    
     
     <security:http access-denied-page="/error403.jsp">
             <security:intercept-url pattern="/*" access="ROLE_USER" />
@@ -38,17 +37,26 @@
         <property name="username" value="simplemvc"></property>
         <property name="password" value="mypassword"></property>
     </bean>
-    <bean id="connection" class="java.sql.Connection" factory-bean="dataSource" factory-method="getConnection" />
-<!--bean id="propertyConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="/WEB-INF/jdbc.properties" />
-<bean id="dataSource"
-    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-    p:driverClassName="${jdbc.driverClassName}"
-    p:url="${jdbc.url}"
-    p:username="${jdbc.username}"
-    p:password="${jdbc.password}" /-->
-
-    <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
-
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <!-- prop key="hibernate.hbm2ddl.auto">update</prop -->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!-- prop key="hibernate.show_sql">true</prop -->
+            </props>
+        </property>
+        <property name="packagesToScan">
+            <list>
+                <value>org.itstep.java.web.shop.model</value>
+            </list>
+        </property>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <context:component-scan base-package="org.itstep.java.web.shop.service" />
+    <context:component-scan base-package="org.itstep.java.web.shop.mvc" />
 </beans>
