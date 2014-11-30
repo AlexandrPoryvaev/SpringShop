@@ -22,6 +22,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class ShopController {
     @Autowired
     GoodService srv;
+
+    public ShopController(GoodService srv) {
+        this.srv = srv;
+    }
+
+    public ShopController() {
+    }
     
     @RequestMapping(method = RequestMethod.GET)
     public String categories(ModelMap model) {
@@ -65,7 +72,8 @@ public class ShopController {
             i.incCount();
         }
 
-        basket.put(id, i);
+        if (i.getGood() != null)
+            basket.put(id, i);
         
         model.addAttribute("basket", basket);
         return "redirect:/shop/category/" + catId.toString();
