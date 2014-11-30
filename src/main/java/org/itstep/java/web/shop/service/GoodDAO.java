@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.itstep.java.web.shop.model.Category;
 import org.itstep.java.web.shop.model.Good;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class GoodDAO implements GoodService {
 
     @Autowired
+    @Qualifier(value = "sessionFactory")
     SessionFactory sf;
     
     @Override

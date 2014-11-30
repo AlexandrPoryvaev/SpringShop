@@ -53,9 +53,37 @@
             </list>
         </property>
     </bean>
+    
+    <bean id="dataSourceOracle" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+        <property name="url" value="jdbc:oracle:thin:@//192.168.1.134:1521/XE"></property>
+        <property name="username" value="step"></property>
+        <property name="password" value="steppass"></property>
+    </bean>
+    <bean id="sessionFactoryOracle" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceOracle" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <!-- prop key="hibernate.hbm2ddl.auto">update</prop -->
+                <!-- prop key="hibernate.hbm2ddl.auto">update</prop -->
+                <!-- prop key="hibernate.show_sql">true</prop -->
+            </props>
+        </property>
+        <property name="packagesToScan">
+            <list>
+                <value>org.itstep.java.web.shop.oraclemodel</value>
+            </list>
+        </property>
+    </bean>
+    
     <tx:annotation-driven transaction-manager="txManager"/>
     <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManagerOracle"/>
+    <bean id="txManagerOracle" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryOracle"></property>
     </bean>
     <context:component-scan base-package="org.itstep.java.web.shop.service" />
     <context:component-scan base-package="org.itstep.java.web.shop.mvc" />
